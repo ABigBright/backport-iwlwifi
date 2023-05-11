@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause
 /*
- * Copyright (C) 2012-2014, 2018-2022 Intel Corporation
+ * Copyright (C) 2012-2014, 2018-2023 Intel Corporation
  * Copyright (C) 2013-2015 Intel Mobile Communications GmbH
  * Copyright (C) 2016-2017 Intel Deutschland GmbH
  */
@@ -902,6 +902,9 @@ get_nvm_from_fw:
 
 	if (ret)
 		IWL_ERR(mvm, "Failed to run INIT ucode: %d\n", ret);
+
+	/* no longer need this regardless of failure or not */
+	mvm->pldr_sync = false;
 
 	return ret;
 }
